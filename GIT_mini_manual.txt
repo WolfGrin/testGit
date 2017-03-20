@@ -1,0 +1,135 @@
+//получить описание команы
+git help названиеКоманды
+
+//добавить инфо о себе
+git config --global user.name "Name"
+git config --global user.email email@com.ua
+
+//игнорирование файлов гитом
+создаем в папке файл .gitignore и добовляем туда файлы или папки, которые не будут проверяться
+
+#коментарий
+folder/
+folder/*.txt
+text.txt
+
+//инициализация папки в гите
+git init
+
+
+//проверка состояния гита в папке
+git status
+
+//способ отображения untrack файлов
+git status --untracked-files=normal
+git status --untracked-files=all
+git status --untracked-files=no
+сокращенная версия: git status -uno
+
+
+//индексирование файла (добавление в контроль версий)
+git add "*php"
+git add .
+git add text.txt
+
+
+
+//сделать слепок
+git commit -m"any comment"
+
+//получить файл со слепка
+git checkout --filename.txt
+
+//добавление коментария стандартным редактором VIM
+git commit
+в открывшемся окне пишем комментарий, нажимаем ESC, пишем :x и нажимаем enter
+
+//установить свой редактор!!!
+git config --global core.editor "'C:\Program Files\Notepad++\notepad++.exe' -multiInst -notabbar -nosession -noPlugin" (не сработало)
+//или добавить в %USERPROFILE%\.gitconfig следующие строки:
+//[core]
+//	editor = 'C:\\Program Files\\Notepad++\\notepad++.exe' -multiInst -notabbar -nosession -noPlugin
+
+
+
+
+
+//посмотреть историю комитов (при слишком длинном списке, для выхода нажать - Q)
+git log
+
+//отформатированный гол
+git log --pretty=format:"%h - %an, %ar : %s"
+%h - короткий код комита
+%an - автор
+%ar - как давно добавлен комит
+%s - комментарий комита
+
+//гол за указаный период времени
+git log --since=2.weeks
+
+//показать детальную инфу о последнем коммите (2 - количество отображаемых изменений)
+git log -p -2
+
+
+//работа с ветками
+1. делаешь ответвление от основной ветки
+2. работаешь в своей ветке
+3. делаешь вливание основной ветки в свою ветку (marge - слияние)
+3.1. если в основной и новой ветках менялись разные файлы, то мерж произойдет автоматически
+3.2. если в осно. и новой ветках правились одинаковые файлы, то мерж делать в ручную
+4. проверяем фенкуионал
+5. отдаем тестировщику (если имеется) 
+6. переключаемя на ветку мастер и делаем комит новых файлов
+
+
+//создаем новую ветку new_f2
+git branch new_f2
+
+//создаем новую ветку new_f и переходим в нее
+git checkout -b new_f
+
+//посмотреть список веток и текущую
+git branch
+
+//детальный список веток (с коментами)
+git branch -v
+
+//переключиться на другую ветку
+git checkout new_f2
+
+
+
+//слияние двух веток..
+//качаем и устаналиваем утилиту для разрешения конфликтов при слиянии двух веток
+// http://kdiff3.sourceforge.net/
+git config --global merge.tool kdiff3
+
+git config --global mergetool.kdiff3.cmd '"C:\\Program Files\\KDiff3\\kdiff3" $BASE $LOCAL $REMOTE -o $MERGET'
+//или вручую добавить в %USERPROFILE%\.gitconfig следующие строки:
+//[mergetool "kdiff3"]
+//	cmd = \"C:\\\\Program Files\\\\KDiff3\\\\kdiff3\" $BASE $LOCAL $REMOTE -o $MERGET
+
+//запустить утилиту для слияния
+git mergetool
+
+//Заливаем вторую ветку (master) в свою
+git merge master
+
+
+
+//работа с удаленным репозиторием
+//добавим удаленный репозиторий
+//origin - сокращенное название репозитория (псевдоним)
+git remote add github https://github.com/WolfGrin/testGit.git
+git remote add bitbucket https://W0lfGrin@bitbucket.org/W0lfGrin/testgit.git
+
+//получить список удаленных репозиториев (имен: origin)
+git remote
+
+//получить детальную информацию о сущ. удаленных репозиториях
+//в полученом результате (fetch - откуда забираем данные, push - куда заливаем)
+git remote -v
+
+//заливаем последний комит на удаленный репозиторий
+//-u - позволяет запомнить куда заливаем комиты поумолчанию
+$ git push -u origin master
