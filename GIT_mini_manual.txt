@@ -1,13 +1,15 @@
-
 /********
+https://youtu.be/gd74R-rvfsY - 2 часа вебинар, немного теории и хорошая практика от разработчиков
+https://www.youtube.com/playlist?list=PLoonZ8wII66iUm84o7nadL-oqINzBLk5g - не большой видеокурс основ использования гита. 13 видео, по 5 - 15 мин
+
 почитать:
 git fork - понятие
-git stash - отмена изменений пр ивозвращения к голове
+git stash - отмена изменений при возвращения указателя к голове
 git flow - тут может быть много
 git pull request
 оторваная голова - понятие
 
-в гит браше посомтреть команду - bower install jquery -S
+в гит баше посомтреть команду - bower install jquery -S
 ********/
 
 
@@ -63,7 +65,7 @@ git checkout --filename.txt
 git commit
 в открывшемся окне пишем комментарий, нажимаем ESC, пишем :x и нажимаем enter
 
-//установить свой редактор!!!
+//установить свой редактор коментариев к комитам!!!
 $ git config --global core.editor '"C:\Program Files\Notepad++\notepad++.exe" -multiIns t -notabbar -nosession -noPlugin'
 //или добавить в %USERPROFILE%\.gitconfig следующие строки:
 //[core]
@@ -130,7 +132,7 @@ git checkout new_f2
 
 
 //слияние двух веток..
-//качаем и устаналиваем утилиту для разрешения конфликтов при слиянии двух веток
+//качаем и устаналиваем утилиту для разрешения конфликтов при слиянии двух веток!!!
 // http://kdiff3.sourceforge.net/
 git config --global merge.tool kdiff3
 
@@ -179,3 +181,20 @@ git fetch
 
 //загрузка в рабочую папку файлов 
 git pull
+
+
+##########################
+
+если во время пуша появляется ошибка:
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/***/***.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+это означает, что не удалось произвести автоматическое слияние файлов. Необходимо выполнить следующие действия:
+1. git pull
+2. git mergetool (или проверить в git status, в каких файлах внесены изменения и отредактировать эти файлы, удалить встроенные коментарии и лишний код) 
+3. git commit -am "Any comments"
+4. git push
