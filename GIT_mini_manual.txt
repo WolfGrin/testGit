@@ -1,15 +1,21 @@
-/********
+﻿/********
 https://youtu.be/gd74R-rvfsY - 2 часа вебинар, немного теории и хорошая практика от разработчиков
 https://www.youtube.com/playlist?list=PLoonZ8wII66iUm84o7nadL-oqINzBLk5g - не большой видеокурс основ использования гита. 13 видео, по 5 - 15 мин
+SourceTree - бесплатная программа для работы с гитом и ветками (если очень хочется визуальный редактор)
 
-почитать:
+http://bogdanov-blog.ru/ustanovka-composer-i-snyatie-ogranicheniya-kolichestva-obrashhenij-k-github/ - установка интерпретатора PHP, композера и "Снятие ограничений запросов с гитхаба"
+
+my GitHub ToKeN - a48bbeb1e170e92fb7aa7e59c9216029731382e6
+
+
+почитать на досуге:
 git fork - понятие
 git stash - отмена изменений при возвращения указателя к голове
 git flow - тут может быть много
 git pull request
 оторваная голова - понятие
 
-в гит баше посомтреть команду - bower install jquery -S
+возникшие ошибки пр иработе, см. в конце документа
 ********/
 
 
@@ -198,3 +204,12 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 2. git mergetool (или проверить в git status, в каких файлах внесены изменения и отредактировать эти файлы, удалить встроенные коментарии и лишний код) 
 3. git commit -am "Any comments"
 4. git push
+
+
+
+если при pull выдает ошибку: fatal: refusing to merge unrelated histories
+делаем: git pull origin branchname --allow-unrelated-histories
+
+
+
+warning: LF will be replaced by CRLF in "name files" - предупреждает о том, что переводы строк в файле lf.txt будут заменены на \r\n. Просто делаем комит
