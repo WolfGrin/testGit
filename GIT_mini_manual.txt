@@ -213,3 +213,9 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 
 
 warning: LF will be replaced by CRLF in "name files" - предупреждает о том, что переводы строк в файле lf.txt будут заменены на \r\n. Просто делаем комит
+
+
+для подключения консоли "git bush" в phpstorm, необходимо в настройках изменить настройку на: (ctrl+alt+s) -> Tools -> Terminal -> Shell path: "C:\Program Files\Git\bin\sh.exe" -login -i
+
+для отображения в консоли "git bush" русский шрифтов, необходимо добавить в файл "C:\Users\User\.gitconfig" строки: [core]
+	quotepath = false
