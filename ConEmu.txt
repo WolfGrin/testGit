@@ -1,2 +1,9 @@
 https://www.fosshub.com/ConEmu.html
 <Monokai>
+
+для интеграции в контекстное меню, в настройках:
+
+Settings->Integration->Command: {Bash::Git bash} -cur_console:n
+и жмем Register
+
+теперь при нажании правой кнопки мыши по папке, можно выбрать зупаск консоли ConEmu в режиме GitBash
