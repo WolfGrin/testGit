@@ -145,9 +145,20 @@ git checkout new_f2
 git config --global merge.tool kdiff3
 
 git config --global mergetool.kdiff3.cmd '"C:\\Program Files\\KDiff3\\kdiff3" $BASE $LOCAL $REMOTE -o $MERGED'
-//или вручую добавить в %USERPROFILE%\.gitconfig следующие строки:
+//# или вручую добавить в %USERPROFILE%\.gitconfig следующие строки:
 //[mergetool "kdiff3"]
 //	cmd = \"C:\\\\Program Files\\\\KDiff3\\\\kdiff3\" $BASE $LOCAL $REMOTE -o $MERGED
+//# если не сработало
+git config --global --add merge.tool kdiff3
+git config --global --add mergetool.kdiff3.path "C:/Program Files/KDiff3/kdiff3.exe"
+git config --global --add mergetool.kdiff3.trustExitCode false
+
+git config --global --add diff.guitool kdiff3
+git config --global --add difftool.kdiff3.path "C:/Program Files/KDiff3/kdiff3.exe"
+git config --global --add difftool.kdiff3.trustExitCode false
+
+
+
 
 //запустить утилиту для слияния
 git mergetool
@@ -191,6 +202,12 @@ git fetch
 git pull
 
 
+//восстановления до последнего коммита
+git reset --hard DEAD
+
+//удалить лишние файлы (за которыми не следим). Файлы в гитигноре не удаляются
+$ git clean -f -d
+
 ##########################
 
 если во время пуша появляется ошибка:
@@ -222,3 +239,5 @@ warning: LF will be replaced by CRLF in "name files" - предупреждае�
 для отображения в консоли "git bush" русский шрифтов, необходимо добавить в файл "C:\Users\User\.gitconfig" строки: [core]
 	quotepath = false
 или в консоли: git config --global core.quotepath false
+
+
