@@ -156,7 +156,10 @@ git config --global --add mergetool.kdiff3.trustExitCode false
 git config --global --add diff.guitool kdiff3
 git config --global --add difftool.kdiff3.path "C:/Program Files/KDiff3/kdiff3.exe"
 git config --global --add difftool.kdiff3.trustExitCode false
-
+//еще вариант
+//[mergetool "kdiff3"]
+//    trustExitCode = false
+//    cmd = 'C:/Program Files/KDiff3/kdiff3.exe' "$LOCAL" "$BASE" "$REMOTE" "$MERGED"
 
 
 
@@ -201,6 +204,8 @@ git fetch
 //загрузка в рабочую папку файлов 
 git pull
 
+//Как вернуться (откатиться) к более раннему коммиту? (хороший мануал)
+https://ru.stackoverflow.com/questions/431520/Как-вернуться-откатиться-к-более-раннему-коммиту
 
 //восстановления до последнего коммита
 git reset --hard DEAD
